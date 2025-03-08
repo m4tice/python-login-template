@@ -13,6 +13,13 @@ def login():
     """
     return render_template('authentication/login.html')
 
+@authentication_bp.route('/loginv2')
+def loginv2():
+    """
+    route: /login
+    """
+    return render_template('authentication/loginv2.html')
+
 @authentication_bp.route('/login/<username>/<password>', methods=['GET'])
 def authenticate(username, password):
     """
