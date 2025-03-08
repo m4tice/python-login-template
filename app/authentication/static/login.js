@@ -6,7 +6,7 @@ document.getElementById('button-login').addEventListener('click', function(event
 });
 
 function authenticate(username, password) {
-    fetch(`/development/login/${username}/${password}`, {
+    fetch(`/auth/login/${username}/${password}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -15,9 +15,10 @@ function authenticate(username, password) {
     .then(response => response.json())
     .then(data => 
         {
+            console.log("GUU8HC: " + data['result']);
             if (data['result'] == true) {
                 document.cookie = `username=${username}`;
-                window.location.href = '/rq1';
+                window.location.href = '/home';
             } else {
                 alert("Invalid username or password");
             }
@@ -34,7 +35,7 @@ document.getElementById('button-register').addEventListener('click', function(ev
 });
 
 function register(username, password) {
-    fetch(`/development/register/${username}/${password}`, {
+    fetch(`/auth/register/${username}/${password}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
