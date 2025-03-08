@@ -4,19 +4,19 @@ author: @GUU8HC
 
 from flask import render_template, jsonify
 
-from app.authentication import authentication
+from app.authenticator import authenticator
 
 from . import authentication_bp
 
 @authentication_bp.route('/obsolete/login')
-def login():
+def obsolete_login():
     """
     route: /login
     """
     return render_template('authentication/obsolete/login.html')
 
 @authentication_bp.route('/login')
-def loginv2():
+def login():
     """
     route: /auth/login
     """
@@ -27,7 +27,8 @@ def authenticate(username, password):
     """
     route: /auth/login/<username>/<password>
     """
-    return jsonify({'result': authentication.authenticate(username, password)})
+    print(f"[DEBUG] {authenticator.authenticate(username, password)}")
+    return jsonify({'result': authenticator.authenticate(username, password)})
 
 @authentication_bp.route('/registration')
 def registration():
