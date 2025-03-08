@@ -6,19 +6,19 @@ from flask import render_template, jsonify
 
 from . import authentication_bp
 
-@authentication_bp.route('/login')
+@authentication_bp.route('/obsolete/login')
 def login():
     """
     route: /login
     """
-    return render_template('authentication/login.html')
+    return render_template('authentication/obsolete/login.html')
 
-@authentication_bp.route('/loginv2')
+@authentication_bp.route('/login')
 def loginv2():
     """
     route: /auth/login
     """
-    return render_template('authentication/loginv2.html')
+    return render_template('authentication/login.html')
 
 @authentication_bp.route('/login/<username>/<password>', methods=['GET'])
 def authenticate(username, password):
