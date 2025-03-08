@@ -1,6 +1,7 @@
 """
 author: @GUU8HC
 """
+#pylint: disable=line-too-long
 
 from app.settings import DEBUG_MODE
 
@@ -12,13 +13,13 @@ class User(DBInterface):
     """
     def __init__(self, db):
         super().__init__(db)
-        self.table_user_credentials = "user_credentials"
+        self.table_user = "user"  # Updated table name
 
     def get_all(self):
         """
         Get all users
         """
-        query = f"SELECT * FROM {self.table_user_credentials};"
+        query = f"SELECT * FROM {self.table_user};"  # Updated table name
 
         if DEBUG_MODE:
             print(f"[DEBUG] user.py: get_all: {query}")
@@ -31,7 +32,7 @@ class User(DBInterface):
         """
         Get user by username
         """
-        query = f"SELECT * FROM {self.table_user_credentials} WHERE username = '{username}';"
+        query = f"SELECT * FROM {self.table_user} WHERE username = '{username}';"  # Updated table name
 
         if DEBUG_MODE:
             print(f"[DEBUG] user.py: get_user_by_username: {query}")
