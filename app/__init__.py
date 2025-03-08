@@ -14,4 +14,7 @@ def create_app():
     from app.home import home_bp
     app.register_blueprint(home_bp, url_prefix='/home')
 
+    from app.authentication import authentication_bp
+    app.register_blueprint(authentication_bp, url_prefix='/auth')
+
     return app
