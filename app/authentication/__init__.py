@@ -1,6 +1,8 @@
 """
 author: @GUU8HC
 """
+#pylint: disable=line-too-long
+#pylint: disable=wrong-import-position
 
 from flask import Blueprint
 

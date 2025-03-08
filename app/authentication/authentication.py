@@ -4,6 +4,8 @@ author: @GUU8HC
 
 from flask import render_template, jsonify
 
+from app.authentication import authentication
+
 from . import authentication_bp
 
 @authentication_bp.route('/obsolete/login')
@@ -25,7 +27,7 @@ def authenticate(username, password):
     """
     route: /auth/login/<username>/<password>
     """
-    return jsonify({'result': True})
+    return jsonify({'result': authentication.authenticate(username, password)})
 
 @authentication_bp.route('/registration')
 def registration():
