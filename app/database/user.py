@@ -35,7 +35,7 @@ class User(DBInterface):
         """
         Get user by username
         """
-        query = f"SELECT * FROM {self.table_user} WHERE username = {username};"
+        query = f"SELECT * FROM {self.table_user} WHERE username = '{username}';"
 
         if DEBUG_MODE:
             print(f"[DEBUG] {FILE_NAME}: get_user_by_username: {query} with username: {username}")
