@@ -2,13 +2,18 @@
 A web login template using python and Flask
 
 # Error documentation
+**Error message**  
+```
+ModuleNotFoundError: No module named 'app'  
+```
 **Action**  
 ```
 pytest -vv  
 ```
-**Error message**  
+**Solution**  
+Execute
 ```
-ModuleNotFoundError: No module named 'app'  
+python -m pytest
 ```
 **Explanation**  
 * Running pytest with the python -m pytest command helps with this exact thing.  
