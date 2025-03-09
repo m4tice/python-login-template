@@ -6,11 +6,13 @@ author: @GUU8HC
 
 import hashlib
 
+from app.database.user import User
+
 class Authenticator:
     """
     Authenticator class
     """
-    def __init__(self, db):
+    def __init__(self, db: User):
         """
         Initializes the Authenticator with a database connection.
         Args:

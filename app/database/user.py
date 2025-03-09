@@ -13,7 +13,21 @@ if DEBUG_MODE:
 
 class User(DBInterface):
     """
-    User database operations
+    User database interface class.
+    This class provides methods to interact with the user table in the database.
+    Attributes:
+        db: The database connection object.
+        table_user (str): The name of the user table.
+        Get all users from the user table.
+        Returns:
+            list: A list of tuples, each representing a user record.
+        pass
+        Get a user by their username.
+        Args:
+            username (str): The username of the user to retrieve.
+        Returns:
+            tuple: A tuple representing the user record, or None if no user is found.
+        pass
     """
     def __init__(self, db):
         super().__init__(db)
@@ -21,7 +35,10 @@ class User(DBInterface):
 
     def get_all(self):
         """
-        Get all users
+        Retrieves all records from the user table.
+        Executes a SQL query to fetch all records from the user table and returns the result.
+        Returns:
+            list: A list of tuples representing all records in the user table.        
         """
         query = f"SELECT * FROM {self.table_user};"
 
@@ -33,7 +50,13 @@ class User(DBInterface):
 
     def get_user_by_username(self, username):
         """
-        Get user by username
+        Retrieves a user record from the database by username.
+        Args:
+            username (str): The username of the user to retrieve.
+        Returns:
+            dict: A dictionary containing the user record if found, otherwise None.
+        Raises:
+            Exception: If there is an error executing the database query.
         """
         query = f"SELECT * FROM {self.table_user} WHERE username = '{username}';"
 
