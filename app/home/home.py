@@ -9,6 +9,8 @@ from . import home_bp
 @home_bp.route('/')
 def home():
     """
-    route: /home
+    Render the home page template.
+    Returns:
+        str: The rendered HTML of the home page.
     """
     return render_template('home/home.html')
