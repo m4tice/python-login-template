@@ -2,20 +2,21 @@
 A web login template using python and Flask
 
 # Error documentation
-**Error message**  
+**1. ModuleNotFoundError when executing pytest**
+Error message  
 ```
 ModuleNotFoundError: No module named 'app'  
 ```
-**Action**  
+Action  
 ```
 pytest -vv  
 ```
-**Solution**  
+Solution  
 Execute
 ```
 python -m pytest
 ```
-**Explanation**  
+Explanation  
 * Running pytest with the python -m pytest command helps with this exact thing.  
 * Since your current package is not yet in your $PYTHONPATH or sys.path - pytest gets this error.  
 * By using python -m pytest you automatically add the working directory into sys.path for running pytest. Their documentation also mentions:  
