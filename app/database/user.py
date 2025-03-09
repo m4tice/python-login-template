@@ -58,12 +58,22 @@ class User(DBInterface):
         Raises:
             Exception: If there is an error executing the database query.
         """
-        query = f"SELECT * FROM {self.table_user} WHERE username = '{username}';"
+        # Old implementation with risk when 'username' is [ admin' OR '1'='1 ]
+        # query = f"SELECT * FROM {self.table_user} WHERE username = '{username}';"
+
+        # if DEBUG_MODE:
+        #     print(f"[DEBUG] {FILE_NAME}: get_user_by_username: {query} with username: {username}")
+
+        # self.cursor.execute(query)
+        # result = self.cursor.fetchone()
+
+        # New implementation with SQL injection protection
+        query = f"SELECT * FROM {self.table_user} WHERE username = ?;"
 
         if DEBUG_MODE:
             print(f"[DEBUG] {FILE_NAME}: get_user_by_username: {query} with username: {username}")
 
-        self.cursor.execute(query)
+        self.cursor.execute(query, (username,))
         result = self.cursor.fetchone()
 
         if DEBUG_MODE:
