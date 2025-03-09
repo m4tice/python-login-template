@@ -20,5 +20,6 @@ python -m pytest
 * Running pytest with the python -m pytest command helps with this exact thing.  
 * Since your current package is not yet in your $PYTHONPATH or sys.path - pytest gets this error.  
 * By using python -m pytest you automatically add the working directory into sys.path for running pytest. Their documentation also mentions:  
-> This is almost equivalent to invoking the command line script pytest  
+> This is almost equivalent to invoking the command line script pytest
+
 *Ref.:* [Py.test No module named *](https://stackoverflow.com/questions/20985157/py-test-no-module-named)
