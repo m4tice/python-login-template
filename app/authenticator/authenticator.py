@@ -1,6 +1,8 @@
 """
 author: @GUU8HC
 """
+#pylint: disable=wrong-import-position
+#pylint: disable=line-too-long
 
 import hashlib
 
@@ -10,20 +12,36 @@ class Authenticator:
     """
     def __init__(self, db):
         """
-        *.db initialization
+        Initializes the Authenticator with a database connection.
+        Args:
+            db: The database connection object.
         """
         self.db = db
 
     def authenticate(self, username, password):
         """
-        Authenticate user
+        Authenticate user.
+        Args:
+            username (str): The username of the user.
+            password (str): The password of the user.
+        Returns:
+            bool: True if authentication is successful, False otherwise.
         """
-        _, _, userpwd = self.db.get_user_by_username(username)
+        # Get user by username
+        # return None if user does not exist in the database
+        user = self.db.get_user_by_username(username)
 
-        return userpwd == self.hash_password(password)
+        # Perform password validation if user exists
+        return user[-1] == self.hash_password(password) if user else False
 
     def hash_password(self, password):
         """
-        Hash password
+        Return the SHA-256 hash of a password.
+
+        Args:
+            password (String): The provided password.
+
+        Returns:
+            String: The SHA-256 hash of the password.
         """
         return hashlib.sha256(password.encode()).hexdigest()

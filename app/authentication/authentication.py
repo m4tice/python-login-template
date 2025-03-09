@@ -27,7 +27,6 @@ def authenticate(username, password):
     """
     route: /auth/login/<username>/<password>
     """
-    print(f"[DEBUG] {authenticator.authenticate(username, password)}")
     return jsonify({'result': authenticator.authenticate(username, password)})
 
 @authentication_bp.route('/registration')
