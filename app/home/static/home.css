@@ -8,13 +8,20 @@ body {
     background-size: cover;
 }
 
-.foreground {
+h1 {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     position: relative;
     z-index: 1;
     color: white; /* Adjust color as needed */
-    background-color: rgba(0, 0, 0, 0.5); /* Optional: Add background color with transparency */
-    padding: 10px;
-    border-radius: 5px;
     text-align: center;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
