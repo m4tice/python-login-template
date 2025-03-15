@@ -17,11 +17,12 @@ h1 {
     opacity: 0;
     transform: translateY(-20px);
     animation: fadeIn 2s forwards;
+    font-size: 100px;
 }
 
 @keyframes fadeIn {
     to {
-        opacity: 1;
+        opacity: 0.6;
         transform: translateY(0);
     }
 }
