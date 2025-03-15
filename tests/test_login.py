@@ -6,7 +6,7 @@ AI-generated test cases for the Home class in the home module.
 
 import pytest
 from flask import Flask
-from app.home.home import home_bp
+from app.authentication.authentication import authentication_bp
 
 
 @pytest.fixture
@@ -20,14 +20,14 @@ def client():
         FlaskClient: A test client for the Flask application.
     """
     app = Flask(__name__)
-    app.register_blueprint(home_bp)
+    app.register_blueprint(authentication_bp)
     app.config['TESTING'] = True
     with app.test_client() as client:
         yield client
 
 def test_home_route(client):
     """Test the home route."""
-    response = client.get('/')
+    response = client.get('/login')
     assert response.status_code == 200
     print(f"[DEBUG] {response.data}")
-    assert b'Homepage' in response.data
+    assert b'Login' in response.data
