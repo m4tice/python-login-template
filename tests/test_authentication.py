@@ -25,9 +25,23 @@ def client():
     with app.test_client() as client:
         yield client
 
-def test_home_route(client):
+def test_login_route(client):
     """Test the login route."""
     response = client.get('/login')
     assert response.status_code == 200
     print(f"[DEBUG] {response.data}")
     assert b'Login' in response.data
+
+def test_registration_route(client):
+    """Test the registration route."""
+    response = client.get('/registration')
+    assert response.status_code == 200
+    print(f"[DEBUG] {response.data}")
+    assert b'Registration' in response.data
+
+def test_restore_password_route(client):
+    """Test the restore-password route."""
+    response = client.get('/restore-password')
+    assert response.status_code == 200
+    print(f"[DEBUG] {response.data}")
+    assert b'Restore' in response.data
