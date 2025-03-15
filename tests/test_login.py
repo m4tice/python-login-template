@@ -26,7 +26,7 @@ def client():
         yield client
 
 def test_home_route(client):
-    """Test the home route."""
+    """Test the login route."""
     response = client.get('/login')
     assert response.status_code == 200
     print(f"[DEBUG] {response.data}")
