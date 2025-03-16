@@ -18,7 +18,7 @@ function authenticate(username, password) {
             console.log("GUU8HC: " + data['result']);
             if (data['result'] == true) {
                 document.cookie = `username=${username}`;
-                window.location.href = '/home';
+                window.location.href = '/home/private';
             } else {
                 alert("Invalid username or password");
             }

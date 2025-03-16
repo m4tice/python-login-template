@@ -1,8 +1,8 @@
-document.getElementById('button-signout').addEventListener('click', function(event) {
+document.getElementById('signin').addEventListener('click', function(event) {
     event.preventDefault();
-    signout();
+    redirect_signin();
 });
 
-function signout(){
+function redirect_signin(){
     window.location.href = '/auth/signin';
-}
+}   
