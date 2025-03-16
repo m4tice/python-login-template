@@ -1,4 +1,4 @@
-document.getElementById('button-login').addEventListener('click', function(event) {
+document.getElementById('button-signin').addEventListener('click', function(event) {
     event.preventDefault(); // Prevent form submission
     const username = document.querySelector('input[type="text"]').value;
     const password = document.querySelector('input[type="password"]').value;
@@ -6,7 +6,7 @@ document.getElementById('button-login').addEventListener('click', function(event
 });
 
 function authenticate(username, password) {
-    fetch(`/auth/login/${username}/${password}`, {
+    fetch(`/auth/signin/${username}/${password}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'

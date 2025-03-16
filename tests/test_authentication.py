@@ -25,12 +25,12 @@ def client():
     with app.test_client() as client:
         yield client
 
-def test_login_route(client):
-    """Test the login route."""
-    response = client.get('/login')
+def test_signin_route(client):
+    """Test the signin route."""
+    response = client.get('/signin')
     assert response.status_code == 200
     print(f"[DEBUG] {response.data}")
-    assert b'Login' in response.data
+    assert b'signin' in response.data
 
 def test_registration_route(client):
     """Test the registration route."""

@@ -22,7 +22,7 @@ body::before {
     z-index: -1;
 }
 
-.login-container {
+.signin-container {
     padding: 30px;
     border-radius: 10px;
     width: 100%;
@@ -31,13 +31,13 @@ body::before {
     z-index: 1;
 }
 
-.login-container h4 {
+.signin-container h4 {
     margin-bottom: 20px;
     text-align: center;
     color: #ffffff;
 }
 
-.login-container .form-control {
+.signin-container .form-control {
     padding: 10px;
     margin: 10px 0;
     border: none;
@@ -48,11 +48,11 @@ body::before {
     border-bottom: 1px solid rgb(169, 169, 169);
 }
 
-.login-container .form-control::placeholder {
+.signin-container .form-control::placeholder {
     color: rgb(169, 169, 169);
 }
 
-.login-container .btn {
+.signin-container .btn {
     padding: 10px;
     border: none;
     border-radius: 10px;
@@ -63,12 +63,12 @@ body::before {
     color: white;
 }
 
-.login-container .btn:hover {
+.signin-container .btn:hover {
     background-color: burlywood;
     color: black;
 }
 
-.login-container .d-flex {
+.signin-container .d-flex {
     justify-content: space-between;
     gap: 10px;
 }

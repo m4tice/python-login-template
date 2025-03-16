@@ -1,5 +1,5 @@
-# python-login-template
-A web login template using python and Flask
+# python-authentication-template
+A web authentication template using python and Flask
 
 # Error documentation
 ##### **1. ModuleNotFoundError when executing pytest**  

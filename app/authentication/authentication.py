@@ -8,24 +8,24 @@ from app.authenticator import authenticator
 
 from . import authentication_bp
 
-@authentication_bp.route('/obsolete/login')
-def obsolete_login():
+@authentication_bp.route('/obsolete/signin')
+def obsolete_signin():
     """
-    route: /login
+    route: /signin
     """
-    return render_template('authentication/obsolete/login.html')
+    return render_template('authentication/obsolete/signin.html')
 
-@authentication_bp.route('/login')
-def login():
+@authentication_bp.route('/signin')
+def signin():
     """
-    route: /auth/login
+    route: /auth/signin
     """
-    return render_template('authentication/login.html')
+    return render_template('authentication/signin.html')
 
-@authentication_bp.route('/login/<username>/<password>', methods=['GET'])
+@authentication_bp.route('/signin/<username>/<password>', methods=['GET'])
 def authenticate(username, password):
     """
-    route: /auth/login/<username>/<password>
+    route: /auth/signin/<username>/<password>
     """
     return jsonify({'result': authenticator.authenticate(username, password)})
 

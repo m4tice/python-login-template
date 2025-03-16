@@ -4,5 +4,5 @@ document.getElementById('button-signout').addEventListener('click', function(eve
 })
 
 function signout(){
-    window.location.href = '/auth/login';
+    window.location.href = '/auth/signin';
 }
