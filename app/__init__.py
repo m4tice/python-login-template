@@ -17,4 +17,7 @@ def create_app():
     from app.authentication import authentication_bp
     app.register_blueprint(authentication_bp, url_prefix='/auth')
 
+    from app.vocabulary import vocabulary_bp
+    app.register_blueprint(vocabulary_bp, url_prefix='/vocabulary')
+
     return app
