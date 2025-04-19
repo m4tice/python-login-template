@@ -4,6 +4,8 @@ author: @GUU8HC
 
 from flask import render_template
 
+from app.util import login_required
+
 from . import home_bp
 
 @home_bp.route('/')
@@ -16,6 +18,7 @@ def home():
     return render_template('home/home.html')
 
 @home_bp.route('/private')
+@login_required
 def home_private():
     """
     Render the home page template.

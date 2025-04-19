@@ -4,5 +4,5 @@ document.getElementById('button-signout').addEventListener('click', function(eve
 });
 
 function redirect_signout(){
-    window.location.href = '/home';
+    window.location.href = '/auth/signout';
 }
