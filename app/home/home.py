@@ -5,6 +5,7 @@ author: @GUU8HC
 from flask import render_template
 
 from app.util import login_required
+from app.util import get_git_branch
 
 from . import home_bp
 
@@ -15,7 +16,7 @@ def home():
     Returns:
         str: The rendered HTML of the home page.
     """
-    return render_template('home/home.html')
+    return render_template('home/home.html', gitv = get_git_branch())
 
 @home_bp.route('/private')
 @login_required
