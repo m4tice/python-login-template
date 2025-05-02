@@ -146,3 +146,16 @@ button:hover {
     margin-top: 30px;
     color: #fff;
 }
+
+#gitv-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: burlywood;
+    color: black;
+    padding: 5px 20px;
+    font-size: 10px;
+    /* font-weight: bold; */
+    border-radius: 25px;
+    z-index: 1000;
+}
