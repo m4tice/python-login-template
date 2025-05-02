@@ -4,7 +4,7 @@ author: @GUU8HC
 #pylint: disable=wrong-import-position
 #pylint: disable=line-too-long
 
-import hashlib
+# import hashlib
 from bcrypt import checkpw, gensalt, hashpw
 
 from app.database.user import User
