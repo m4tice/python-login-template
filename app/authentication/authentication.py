@@ -6,6 +6,7 @@ from flask import render_template, jsonify
 
 from app.authenticator import authenticator
 from app.util import login_user, logout_user
+from app.util import get_git_branch
 
 from . import authentication_bp
 
@@ -21,7 +22,7 @@ def signin():
     """
     route: /auth/signin
     """
-    return render_template('authentication/signin.html')
+    return render_template('authentication/signin.html', gitv=get_git_branch())
 
 @authentication_bp.route('/signin/<username>/<password>', methods=['GET'])
 def authenticate(username, password):
@@ -36,7 +37,7 @@ def registration():
     """
     route: /auth/registration
     """
-    return render_template('authentication/registration.html')
+    return render_template('authentication/registration.html', gitv=get_git_branch())
 
 @authentication_bp.route('/registration/<username>/<password>', methods=['GET'])
 def register(username, password):
@@ -50,7 +51,7 @@ def restore_password():
     """
     route: /auth/restore-password
     """
-    return render_template('authentication/restore-password.html')
+    return render_template('authentication/restore-password.html', gitv=get_git_branch())
 
 @authentication_bp.route('/signout')
 def signout():
