@@ -47,3 +47,20 @@ class Authenticator:
             String: The SHA-256 hash of the password.
         """
         return hashlib.sha256(password.encode()).hexdigest()
+
+    def register(self, username, password):
+        """
+        Register a new user.
+        Args:
+            username (str): The username of the user.
+            password (str): The password of the user.
+        Returns:
+            bool: True if registration is successful, False otherwise.
+        """
+        # Check if user already exists
+        if self.db.get_user_by_username(username):
+            return False
+
+        # Create new user
+        self.db.create_user(username, self.hash_password(password))
+        return True

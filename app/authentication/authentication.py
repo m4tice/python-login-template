@@ -5,7 +5,7 @@ author: @GUU8HC
 from flask import render_template, jsonify
 
 from app.authenticator import authenticator
-from app.util import login_required, login_user, logout_user
+from app.util import login_user, logout_user
 
 from . import authentication_bp
 
@@ -37,6 +37,13 @@ def registration():
     route: /auth/registration
     """
     return render_template('authentication/registration.html')
+
+@authentication_bp.route('/registration/<username>/<password>', methods=['GET'])
+def register(username, password):
+    """
+    route: /auth/registration/<username>/<password>
+    """
+    return jsonify({'result': authenticator.register(username, password)})
 
 @authentication_bp.route('/restore-password')
 def restore_password():
