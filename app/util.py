@@ -4,6 +4,7 @@ author: @guu8hc
 
 from functools import wraps
 from flask import redirect, url_for, session
+from git import Repo
 
 def login_required(f):
     """
@@ -30,3 +31,9 @@ def logout_user():
     Log out the user by removing their user ID from the session.
     """
     session.clear()  # Clear the session to log out the user
+
+def get_git_branch():
+    """
+    return name of current Git branch
+    """
+    return Repo('.').active_branch.name
