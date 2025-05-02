@@ -16,7 +16,7 @@ def home():
     Returns:
         str: The rendered HTML of the home page.
     """
-    return render_template('home/home.html', gitv = get_git_branch())
+    return render_template('home/home.html', gitv=get_git_branch())
 
 @home_bp.route('/private')
 @login_required
@@ -26,4 +26,4 @@ def home_private():
     Returns:
         str: The rendered HTML of the home page.
     """
-    return render_template('home/home-private.html')
+    return render_template('home/home-private.html', gitv=get_git_branch())

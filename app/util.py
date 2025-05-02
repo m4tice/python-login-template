@@ -6,6 +6,8 @@ from functools import wraps
 from flask import redirect, url_for, session
 from git import Repo
 
+from app.settings import GIT_BRANCH
+
 def login_required(f):
     """
     Decorator to restrict access to authenticated users.
@@ -36,4 +38,4 @@ def get_git_branch():
     """
     return name of current Git branch
     """
-    return Repo('.').active_branch.name
+    return Repo('.').active_branch.name if GIT_BRANCH else None
