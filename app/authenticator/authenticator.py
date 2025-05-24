@@ -8,6 +8,7 @@ author: @GUU8HC
 from bcrypt import checkpw, gensalt, hashpw
 
 from app.database.user import User
+from app.settings import DEBUG_MODE
 
 class Authenticator:
     """
@@ -43,6 +44,8 @@ class Authenticator:
         Returns:
             bool: True if the password matches the hashed password, False otherwise.
         """
+        if DEBUG_MODE:
+            print(f"[DEBUG] authenticator.py: Verifying password: {checkpw(password.encode(), hashed_password.encode())}")
         return checkpw(password.encode(), hashed_password.encode())
 
     def authenticate(self, username, password):
