@@ -7,6 +7,7 @@ from flask import render_template, jsonify
 from app.authenticator import authenticator
 from app.util import login_user, logout_user
 from app.util import get_git_branch
+from app.settings import DEBUG_MODE
 
 from . import authentication_bp
 
@@ -30,7 +31,12 @@ def authenticate(username, password):
     route: /auth/signin/<username>/<password>
     """
     login_user(username)
-    return jsonify({'result': authenticator.authenticate(username, password)})
+    result = authenticator.authenticate(username, password)
+
+    if DEBUG_MODE:
+        print(f"[DEBUG] authentication.py: Authentication result: {result}")
+
+    return jsonify({'result': result})
 
 @authentication_bp.route('/registration')
 def registration():

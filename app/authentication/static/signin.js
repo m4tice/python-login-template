@@ -1,11 +1,14 @@
-document.getElementById('button-signin').addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent form submission
-    const username = document.querySelector('input[type="text"]').value;
-    const password = document.querySelector('input[type="password"]').value;
-    authenticate(username, password)
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById('button-signin').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent form submission
+        const username = document.querySelector('input[type="text"]').value;
+        const password = document.querySelector('input[type="password"]').value;
+        authenticate(username, password)
+    });
 });
 
 function authenticate(username, password) {
+    console.log("[DEBUG] signin.js: authenticate() called");
     fetch(`/auth/signin/${username}/${password}`, {
         method: 'GET',
         headers: {
