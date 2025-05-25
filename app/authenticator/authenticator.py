@@ -4,7 +4,6 @@ author: @GUU8HC
 #pylint: disable=wrong-import-position
 #pylint: disable=line-too-long
 
-# import hashlib
 from bcrypt import checkpw, gensalt, hashpw
 
 from app.database.user import User
@@ -24,15 +23,12 @@ class Authenticator:
 
     def hash_password(self, password):
         """
-        Return the SHA-256 hash of a password.
-
+        Hashes a given password using bcrypt.
         Args:
-            password (String): The provided password.
-
+            password (str): The plaintext password to be hashed.
         Returns:
-            String: The SHA-256 hash of the password.
+            str: The hashed password as a UTF-8 encoded string.
         """
-        # return hashlib.sha256(password.encode()).hexdigest()
         return hashpw(password.encode(), gensalt()).decode('utf-8')
 
     def verify_password(self, password, hashed_password):
@@ -62,7 +58,6 @@ class Authenticator:
         user = self.db.get_user_by_username(username)
 
         # Perform password validation if user exists
-        # return user[-1] == self.hash_password(password) if user else False
         return self.verify_password(password, user[-1]) if user else False
 
     def register(self, username, password):
