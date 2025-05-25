@@ -4,9 +4,10 @@ author: @GUU8HC
 #pylint: disable=wrong-import-position
 #pylint: disable=line-too-long
 
-import hashlib
+from bcrypt import checkpw, gensalt, hashpw
 
 from app.database.user import User
+from app.settings import DEBUG_MODE
 
 class Authenticator:
     """
@@ -19,6 +20,29 @@ class Authenticator:
             db: The database connection object.
         """
         self.db = db
+
+    def hash_password(self, password):
+        """
+        Hashes a given password using bcrypt.
+        Args:
+            password (str): The plaintext password to be hashed.
+        Returns:
+            str: The hashed password as a UTF-8 encoded string.
+        """
+        return hashpw(password.encode(), gensalt()).decode('utf-8')
+
+    def verify_password(self, password, hashed_password):
+        """
+        Verifies if the provided password matches the hashed password.
+        Args:
+            password (str): The plain text password to verify.
+            hashed_password (str): The hashed password to compare against.
+        Returns:
+            bool: True if the password matches the hashed password, False otherwise.
+        """
+        if DEBUG_MODE:
+            print(f"[DEBUG] authenticator.py: Verifying password: {checkpw(password.encode(), hashed_password.encode())}")
+        return checkpw(password.encode(), hashed_password.encode())
 
     def authenticate(self, username, password):
         """
@@ -34,19 +58,7 @@ class Authenticator:
         user = self.db.get_user_by_username(username)
 
         # Perform password validation if user exists
-        return user[-1] == self.hash_password(password) if user else False
-
-    def hash_password(self, password):
-        """
-        Return the SHA-256 hash of a password.
-
-        Args:
-            password (String): The provided password.
-
-        Returns:
-            String: The SHA-256 hash of the password.
-        """
-        return hashlib.sha256(password.encode()).hexdigest()
+        return self.verify_password(password, user[-1]) if user else False
 
     def register(self, username, password):
         """
